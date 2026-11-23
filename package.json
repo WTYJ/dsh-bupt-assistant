@@ -1,0 +1,64 @@
+{
+  "name": "dsh-bupt-assistant",
+  "version": "1.0.0",
+  "description": "DSH 北邮个人助理插件：系统钥匙串安全登录，自动同步教学云作业 DDL、移动教务课表与考试，无损导出至任意目录 Markdown。",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "bupt",
+    "ucloud",
+    "assistant",
+    "schedule",
+    "markdown"
+  ],
+  "author": "WTYJ (https://github.com/WTYJ)",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WTYJ/dsh-bupt-assistant.git"
+  },
+  "homepage": "https://github.com/WTYJ/dsh-bupt-assistant#readme",
+  "bugs": {
+    "url": "https://github.com/WTYJ/dsh-bupt-assistant/issues"
+  },
+  "main": "./index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.mjs",
+    "config.mjs",
+    "keychain-bridge.mjs",
+    "sync-engine.mjs",
+    "formatter.mjs",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
